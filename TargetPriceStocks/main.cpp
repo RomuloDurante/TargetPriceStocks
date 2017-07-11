@@ -60,12 +60,13 @@ switch (option)
                 cin >> Payout;
                 Clear();
             //---------------------------------------------------------------------------
-                cout << " Enter EPS of the year " << CurrentYear - 10 << ": ";
+                cout << " Enter EPS(TTM) of the year " << CurrentYear - 10 << ": ";
             float TenYearsAgoEPS = 0;  //It is necessary to obtain the EPS ten years ago
                 cin >> TenYearsAgoEPS;  // To be able to calculate the percentage they grew in 10 years
                 Clear();
             //---------------------------------------------------------------------------
-                 cout << " Enter EPS of the current year " << CurrentYear << ": ";
+                 cout << " Enter the last EPS(TTM). (Year->" << CurrentYear - 1 << "): ";
+            int lastyeareps = CurrentYear - 1; // Stores the last year with eps
             float EpsAtual = 0; // You need the current EPS to compare with the EPS of 10 years ago
                  cin >> EpsAtual;// in order to get the percentage that  grew
                  Clear();
@@ -111,8 +112,9 @@ switch (option)
             cout << "-----------------------------------------------------------------\n";
             cout << "                     Parameters used                             \n";
             cout << " " << Company <<                                                "\n";
-            cout << " P/L:" << pl << " | EPS " << FiveYears[1] - 11 << ": $";
-            cout << setprecision(3)<< TenYearsAgoEPS;                            // here shows the data base used
+            cout << " P/L:" << pl << " | EPS(TTM) " << FiveYears[1] - 11 << ":$";
+            cout << setprecision(3)<< TenYearsAgoEPS;
+            cout << " | EPS(TTM) " << lastyeareps << ":$" << EpsAtual ; // here shows the data base used
             cout << " | Payout:" << Payout << "%\n";
             cout << "-----------------------------------------------------------------\n";
             //----------------------------------------------------------------------------------------------
@@ -124,7 +126,7 @@ switch (option)
 
                  for ( int i=0; i < 5 ; i++)
                     {
-                     cout <<" "<< FiveYears[i] <<"     =>      "<< setprecision(3) << EpsAtual << " + " << perc << "      =>       ";
+                     cout <<" "<< FiveYears[i] <<"     =>      $ "<< setprecision(3) << EpsAtual << " +  " << perc << "      =>       $";
                      cout << setprecision(3) << (EpsAtual * growUp) << "\n";
                      EpsAtual = EpsAtual * growUp; // Here shows year-on-year earnings per share
                      sum = EpsAtual + sum;
@@ -140,14 +142,14 @@ switch (option)
                   EstimatedPrice = (EpsAtual * pl) + Divid;
             //--------------------------------------------------------------------------------------------------
             cout << "-----------------------------------------------------------------\n";
-            cout << " Year    |   EPS - Minimum return rate of "<< perc <<    " | #Price to get desired return# \n";
-            cout << "         |                                    |               \n";
+            cout << " Year    |  EPS - Minimum return rate of "<< perc <<    " | #Price to get desired return# \n";
+            cout << "         |                                   |               \n";
 
                 for ( int i=4; i >=0 ; i--)
                     {
-                     cout <<" "<< FiveYears[i] <<" =>       "<< setprecision(4)<<"    "<< EstimatedPrice << " / " << perc;
+                     cout <<" "<< FiveYears[i] <<" =>       "<< setprecision(4)<<"    $ "<< EstimatedPrice << " / " << perc;
                      cout << "            =>      (#";
-                     cout << setprecision(4)<<"  "<< ( EstimatedPrice / growUp ) << "#)\n"; // here the heart of the analysis
+                     cout << setprecision(4)<<"  $ "<< ( EstimatedPrice / growUp ) << " #)\n"; // here the heart of the analysis
                      EstimatedPrice = EstimatedPrice / growUp;// will tell us the price to pay to get the return what we want.
 
                     }
@@ -172,7 +174,7 @@ switch (option)
     cout << " Exit >>> \n\n";
 
 
-
+    system("pause");
     return 0;
 }
 
