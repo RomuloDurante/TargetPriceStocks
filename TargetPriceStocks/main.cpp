@@ -24,6 +24,8 @@ void menu();
 
 void calcmade();
 
+void data(); //What data do I need
+
 //======================================================================
 int main()
 {
@@ -40,7 +42,8 @@ switch (option)
             break;
 
         case 2:
-
+            Clear();
+            data(); //What data do I need
             break;
 
         case 3:
@@ -56,7 +59,7 @@ switch (option)
                 Clear();
             //---------------------------------------------------------------------------
              float Payout = 0;
-                cout << " Enter the Dividend Payout% : "; // Current company payout
+                cout << " Enter the Dividend Yield% : "; // Current company payout
                 cin >> Payout;
                 Clear();
             //---------------------------------------------------------------------------
@@ -160,7 +163,7 @@ switch (option)
 
 }
 
-    cout << " Would you like calculate again ? Y/N\n";
+    cout << " Would you like calculate? Y/N\n";
     char opt;
     cin >> opt;
 
@@ -218,4 +221,18 @@ void calcmade() //How the calculation is made
     cout << " So we will get the price to be paid to have the expected return\n";
     cout << "-----------------------------------------------------------------\n\n";
 
+}
+
+void data() //What data do I need
+{
+   cout << " You need to collect some information on the websites\n";
+   cout << " that provide market and business data. Some examples are Yahoo finance\n";
+   cout << " stock brokerage, or the company's own website in question.\n";
+   cout << " ------------------------------------------------------------------------\n\n";
+   cout << " - Required data:\n\n";
+   cout << " -> Dividend Yield: Represents the dividends paid in a given period.\n\n";
+   cout << " -> EPS(TTM): Earnings per Share is the total earnings  the\n";
+   cout << " company has made over the last 12 months.\n\n";
+   cout << " -> You need the EPS(TTM) 10 years ago and EPS(TTM) of the last year.\n\n";
+   cout << " -> You will need the current P/L of the company.\n\n";
 }
