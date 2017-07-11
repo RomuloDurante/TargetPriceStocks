@@ -22,6 +22,8 @@ void Clear();
 
 void menu();
 
+void calcmade();
+
 //======================================================================
 int main()
 {
@@ -32,6 +34,8 @@ int main()
 switch (option)
     {
         case 1:
+            Clear();
+            calcmade(); // How the calculation is made
 
             break;
 
@@ -136,15 +140,15 @@ switch (option)
                   EstimatedPrice = (EpsAtual * pl) + Divid;
             //--------------------------------------------------------------------------------------------------
             cout << "-----------------------------------------------------------------\n";
-            cout << " Year    |   EPS - Minimum return rate of "<< perc <<    "   | Price to get desired return \n";
-            cout << "         |                                      |               \n";
+            cout << " Year    |   EPS - Minimum return rate of "<< perc <<    " | #Price to get desired return# \n";
+            cout << "         |                                    |               \n";
 
                 for ( int i=4; i >=0 ; i--)
                     {
-                     cout <<" "<< FiveYears[i] <<"    =>       "<< setprecision(4)<<"    "<< EstimatedPrice << " / " << perc;
-                     cout << "               =>      (";
-                     cout << setprecision(4)<<"  "<< ( EstimatedPrice / growUp ) << " )\n"; // here the heart of the analysis
-                     EstimatedPrice = EstimatedPrice / growUp;              // will tell us the price to pay to get the return what we want.
+                     cout <<" "<< FiveYears[i] <<" =>       "<< setprecision(4)<<"    "<< EstimatedPrice << " / " << perc;
+                     cout << "            =>      (#";
+                     cout << setprecision(4)<<"  "<< ( EstimatedPrice / growUp ) << "#)\n"; // here the heart of the analysis
+                     EstimatedPrice = EstimatedPrice / growUp;// will tell us the price to pay to get the return what we want.
 
                     }
             cout <<"-----------------------------------------------------------------\n";
@@ -189,3 +193,27 @@ void menu()
    cout << " * [3] START CALCULATING               *\n";
    cout << " ***************************************\n\n";
 } // main menu;
+
+void calcmade() //How the calculation is made
+{
+    cout << " Step 1: Design EPS growth over the next 5 years.\n";
+    cout << " If the EPS growth of the company is greater than 15% we will use 15%\n";
+    cout << " If it is less than 15% we will use 10%\n";
+    cout << "-----------------------------------------------------------------\n\n";
+    cout << " Step 2: Use the current P / L as follows:\n";
+    cout << " If the current P / L is greater than 20 we will use a P / L of 17.\n";
+    cout << " If it is less than 20 we will use a P / L 12\n";
+    cout << "-----------------------------------------------------------------\n\n";
+    cout << " Step 3: Carry out the calculation as follows:\n";
+    cout << " Combine the current EPS (TTM) with the percentage set in step1 for the next 5 years\n";
+    cout << " Multiply the estimated P / L defined in step2 by estimated EPS at the end of the fifth year\n";
+    cout << " Calculate the profits paid in the form of dividends\n";
+    cout << " Get the total share price\n";
+    cout << "-----------------------------------------------------------------\n\n";
+    cout << " Step 4: Design the price to pay to get the desired return:\n";
+    cout << " After obtaining the total share price at the end of the fifth year\n";
+    cout << " We will divide this value by the percentage we want to return\n";
+    cout << " So we will get the price to be paid to have the expected return\n";
+    cout << "-----------------------------------------------------------------\n\n";
+
+}
