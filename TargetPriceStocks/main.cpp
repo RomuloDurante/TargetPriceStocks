@@ -158,7 +158,7 @@ switch (option)
     char opt;
     cin >> opt;
 
-    if ( opt == 'y' || 'Y')
+    if ( opt == 'y')
     {
         Clear();
         return (main());
